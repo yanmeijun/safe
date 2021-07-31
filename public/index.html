@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="<%= BASE_URL %>config.png">
+    <!-- <link rel="icon" href="<%= BASE_URL %>yswh.png"> -->
+    <!-- <script src="<%= BASE_URL %>iconfont.js"></script> -->
+    <script src="//at.alicdn.com/t/font_2016012_f9nnal80bkc.js"></script>
+    <script>
+      function enter(elem){
+        if(elem.getElementsByClassName("dialogErrWordResult")[0]){
+          elem.getElementsByClassName("dialogErrWordResult")[0].style.display='block';
+        }
+       }
+       function leave(elem){
+         if(elem.getElementsByClassName("dialogErrWordResult")[0]){
+          elem.getElementsByClassName("dialogErrWordResult")[0].style.display='none'
+         }
+       }
+    </script>
+    <title><%= webpackConfig.name %></title>
+    <!-- <title>中国科协内容安全审查系统</title> -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    
+  </body>
+  
+</html>

@@ -1,0 +1,300 @@
+<template>
+  <!-- 裁剪图片 start-->
+  <el-dialog
+    title="裁剪图片"
+    width="700px"
+    class="cropPic"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
+    :show-close="true"
+    :append-to-body="true"
+    :visible.sync="isShowCropper"
+  >
+    <!-- 主区域 start -->
+    <div class="vue-cropper-box">
+      <!-- 裁剪框 start -->
+      <div class="vue-cropper-content">
+        <div
+          class="show-cropper"
+          v-loading="loading"
+          element-loading-text="加载中"
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(0, 0, 0, 0.8)"
+        >
+          <VueCropper
+            ref="cropper"
+            :img="options.img"
+            :outputSize="options.size"
+            :outputType="options.outputType"
+            :info="options.info"
+            :centerBox="options.centerBox"
+            :canScale="options.canScale"
+            :autoCrop="options.autoCrop"
+            :autoCropWidth="options.autoCropWidth"
+            :autoCropHeight="options.autoCropHeight"
+            :fixedBox="options.fixedBox"
+            :fixed="options.fixed"
+            :fixedNumber="options.fixedNumber"
+            :original="options.original"
+            :full="options.full"
+            @imgLoad="imgLoad"
+          ></VueCropper>
+
+          <!-- @realTime="realTime" -->
+        </div>
+      </div>
+      <!-- 裁剪框 end -->
+
+      <!--底部 设置按钮 start-->
+      <div class="vue-cropper-bottom">
+        <!-- <p class="vue-cropper-bottom-item">
+            自定义尺寸：<el-switch v-model="options.fixedBox"
+                       active-color="#13ce66"
+                       inactive-color="#ff4949"
+                       :active-value="false"
+                       :inactive-value="true"> </el-switch>
+          </p> -->
+        <p class="vue-cropper-bottom-item">
+          <el-tooltip
+            class="item"
+            effect="light"
+            content="放大图片"
+            placement="top"
+          >
+            <i class="el-icon-zoom-in scale" @click="changeScale(1)"></i>
+          </el-tooltip>
+        </p>
+        <p class="vue-cropper-bottom-item">
+          <el-tooltip
+            class="item"
+            effect="light"
+            content="缩小图片"
+            placement="top"
+          >
+            <i class="el-icon-zoom-out scale" @click="changeScale(-1)"></i>
+          </el-tooltip>
+        </p>
+        <p class="vue-cropper-bottom-item">
+          <el-tooltip
+            class="item"
+            effect="light"
+            content="向左旋转90°"
+            placement="top"
+          >
+            <i class="el-icon-refresh-left scale" @click="rotateLeft"></i>
+          </el-tooltip>
+        </p>
+      </div>
+      <!--底部 设置按钮 end-->
+    </div>
+    <!-- 主区域 end -->
+
+    <span slot="footer" class="dialog-footer">
+      <el-button v-if="isShowCropper" @click="cancelCubeImg">取消</el-button>
+      <el-button
+        v-if="isShowCropper"
+        type="primary"
+        :disabled="loading"
+        :loading="isLoading"
+        @click="onCubeImg"
+        >确定</el-button
+      >
+    </span>
+  </el-dialog>
+  <!-- 裁剪图片 end-->
+</template>
+
+<script>
+import { VueCropper } from "vue-cropper";
+export default {
+  name: "vue-cropper-item",
+  components: {
+    VueCropper
+  },
+  data() {
+    return {
+      isCompress: true, //是否压缩
+      compress: 0.8, //压缩率
+      isShowCropper: false,
+      options: {
+        img: "",
+        info: true,
+        size: 1,
+        outputType: "jpeg", //裁剪生成图片的格式
+        centerBox: false, //截图框是否被限制在图片里面
+        canScale: true, //图片是否允许滚轮缩放
+
+        autoCrop: true, // 是否默认生成截图框, 只有自动截图开启 宽度高度才生效
+        autoCropWidth: 200,
+        autoCropHeight: 200,
+        fixedBox: false, //  固定截图框大小 不允许改变
+
+        fixed: true, // 开启宽度和高度比例
+        fixedNumber: [6, 6],
+
+        original: false, // 上传图片按照原始比例渲染
+        full: true, // 是否输出原图比例的截图
+
+        minImgSize: 200
+      },
+      fileName: null,
+
+      originalPos: null,
+
+      loading: false,
+      isLoading: false,
+      previews: {}
+    };
+  },
+  methods: {
+    // 初始化
+    init() {
+      this.isShowCropper = true;
+      this.loading = true;
+    },
+
+    // 图片加载完成
+    imgLoad(data) {
+      this.loading = false;
+      this.isLoading = false;
+    },
+
+    // 裁剪图放大或缩小
+    changeScale(val) {
+      console.log(val);
+      this.$refs.cropper.changeScale(val);
+    },
+
+    // 向左旋转
+    rotateLeft() {
+      this.$refs.cropper.rotateLeft();
+    },
+
+    // 裁剪图片上传
+    onCubeImg(file) {
+      this.isLoading = true;
+      this.$refs.cropper.getCropData(data => {
+        this.isLoading = false;
+        this.isShowCropper = false;
+        this.options.img = "";
+
+        let file = null;
+        if (this.isCompress) {
+          //是否压缩
+          let img = new Image();
+          img.src = data;
+          img.onload = () => {
+            let _data = this.onImgCompression(img);
+            file = this.dataURLtoFile(_data, this.fileName);
+            console.log(
+              "图片大小-压缩过:",
+              (file.size / 1024).toFixed(2),
+              "kb，",
+              "压缩率：",
+              this.compress
+            );
+            //this.$emit('confirm', file)
+            this.$emit("confirm", {
+              file: file,
+              originalPos: this.originalPos
+            });
+          };
+        } else {
+          file = this.dataURLtoFile(data, this.fileName);
+          console.log("图片大小-未压缩:", (file.size / 1024).toFixed(2), "kb");
+          //this.$emit('confirm', file)
+          this.$emit("confirm", { file: file, originalPos: this.originalPos });
+        }
+      });
+    },
+
+    // 将裁剪base64的图片转换为file文件
+    dataURLtoFile(dataurl, filename) {
+      var arr = dataurl.split(","),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], filename, { type: mime });
+    },
+
+    // 压缩图片
+    onImgCompression(img) {
+      let canvas = document.createElement("canvas");
+      let ctx = canvas.getContext("2d");
+      let initSize = img.src.length;
+      let width = img.width;
+      let height = img.height;
+      canvas.width = width;
+      canvas.height = height;
+      // 铺底色
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, width, height);
+      //进行压缩
+      let compress = this.compress || 0.8; //压缩率
+      return canvas.toDataURL("image/jpeg", compress);
+    },
+
+    // 取消裁剪
+    cancelCubeImg() {
+      this.isShowCropper = false;
+      this.$message.info("取消裁剪图片！");
+    }
+  },
+  watch: {}
+};
+</script>
+
+<style lang="scss" scoped>
+.vue-cropper-box {
+  width: 100%;
+  /* height: 450px; */
+  height: 100%;
+  .vue-cropper-content {
+    width: 100%;
+    height: 90%;
+    padding-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    .show-cropper {
+      // width: 50%;
+      width: 100%;
+      height: 100%;
+    }
+    .show-preview {
+      width: 50%;
+      height: 100%;
+      margin: 5px;
+      overflow: hidden;
+    }
+  }
+
+  .vue-cropper-bottom {
+    display: flex;
+    flex-flow: wrap row;
+    // justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    &-item {
+      margin-right: 15px;
+    }
+    .scale {
+      font-size: 24px;
+      color: dodgerblue;
+      vertical-align: middle;
+      &:hover {
+        //color: mediumseagreen;
+        //box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+      }
+    }
+  }
+}
+</style>

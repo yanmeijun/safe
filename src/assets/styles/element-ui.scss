@@ -1,0 +1,548 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+.cell {
+  .el-tag {
+    margin-right: 0;
+  }
+}
+
+.small-padding {
+  .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.fixed-width {
+  .el-button--mini {
+    padding: 7px 10px;
+    width: 60px;
+  }
+}
+
+.status-col {
+  .cell {
+    padding: 0 10px;
+    text-align: center;
+
+    .el-tag {
+      margin-right: 0;
+    }
+  }
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+  min-height: 180px;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// fix date-picker ui bug in filter-item
+.el-range-editor.el-input__inner {
+  display: inline-flex !important;
+}
+.el-range-editor.el-input__inner{
+  padding: 3px 3px !important;
+}
+
+.el-table th.is-leaf{
+  background: #fafafa;
+}
+.el-pagination{
+  text-align: right;
+}
+.el-dialog__body {
+  padding: 26px 20px;
+  height: -webkit-calc(100% - 116px);
+  height: -moz-calc(100% - 116px);
+  height: calc(100% - 116px);
+  overflow: auto;
+}
+.el-dialog__header{
+  background: #fff;
+  margin: 0 20px;
+  padding: 13px 0 !important;
+  border-bottom:1px solid #E8E8E8;
+}
+.el-dialog__title {
+  font-weight: 500;
+  font-size: 14px !important;
+  color: #000000;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #000;
+  opacity: 0.5;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+}
+.dialog-footer .el-button--text{
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 9px 15px;
+}
+.dialog-footer .el-button--text span{
+    opacity: 0.5;
+    font-size: 14px;
+    color: #000000;
+}
+.el-form-item__label,.el-tree-node__label{
+    opacity: 0.65;
+    color: #000000;
+    font-weight: normal;
+}
+.treeMenu{
+    border-bottom: 1px solid #E8E8E8;
+    margin: 0 0px -20px;
+}
+.el-tree-node__content{
+    height: 34px;
+}
+.el-pager li {
+    padding: 0;
+    background: #fff;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 14px;
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 5px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    font-weight: normal;
+    color: #5c5c5c;
+    transition: all 0.2s ease 0s;
+}
+.el-pager li.active+li {
+    border-left: 1px solid #d9d9d9;
+}
+.el-pager li.btn-quicknext, .el-pager li.btn-quickprev{
+    color: #555;
+    border: none;
+    font-weight: 100;
+    margin: 0;
+}
+.el-pager li.active{
+    border: 1px solid #2E8CF0;
+    color: #2E8CF0;
+}
+.el-pagination span:not([class*=suffix]), .el-pagination button{
+    min-width: 28px;
+}
+.el-pagination .btn-prev, .el-pagination .btn-next{
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+}
+.el-pagination .btn-prev,.el-pagination .btn-next{
+    padding: 0;
+}
+.svg-iconWh34{
+    width: 44px;
+    height: 38px;
+    float: left;
+}
+.el-input__icon.el-range__close-icon{
+    display: none !important;
+}
+.el-date-editor .el-range-input{
+    width: 42%;
+}
+.siteMenuBox .date-item{
+    width: 200px;
+}
+.el-table .cell{
+    line-height: normal;
+}
+
+
+
+.search-operate-ymj.searchAllBox{
+  padding: 19px 165px 30px 30px;
+}
+.searchAllBox{
+  position: relative;
+  margin-left: -20px;
+}
+.searchAllBox .whStyle{
+  margin-bottom: 10px;
+}
+.searchAllBox .whStyle label{
+  width: 100px;
+  text-align: right;
+}
+.searchAllBox.otherSearchBox .wh90 .main-aside-txt{
+  width: 90px;
+  text-align: right;
+}
+.searchAllBox.otherSearchBox  .marRt135{
+  margin-right: 135px;
+}
+.btnRtSearch{
+  position: absolute;
+  right:20px;
+  top: 20px;
+}
+.searchAllBox.otherSearchBox .btnRtSearch{
+  right:-2px;
+  top: 0px;
+}
+.publicDialogList .el-select.el-select--small .el-input .el-input__inner{
+  width: 100%;
+}
+.mainTable.fwcgTable.zebra .checkboxTab svg.svg-icon-operW16{
+    opacity: 1;
+}
+.errWordTd{
+    border-bottom: 1px solid #eee;
+}
+.errWordTd:nth-last-of-type(1){
+    border-bottom: none;
+}
+.searchAllBox.otherSearchBox .wh90 .main-aside-txt.whLabel60{
+    width: 60px;
+}
+.searchAllBox.otherSearchBox .wh60 .main-aside-txt{
+    width: 60px;
+    text-align: right;
+}
+.svg-icon-operW20{
+    width: 19.5px;
+    height: 19.5px;
+    vertical-align: middle;
+    opacity: 0.5;
+}
+.siteMenuBox.marTop10{
+    margin-top: 10px;
+    border-radius: 4px;
+    padding: 20px 20px 10px;
+}
+.errSentiveInfoBox.marTop10{
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.searchTabBox.marTop10{
+    margin-top: 10px;
+    border-radius: 4px;
+}
+/*.el-table-column--selection .cell {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}*/
+.tableColumnWh .el-table-column--selection .cell,
+.tableColumnWh .el-table_1_column_2 .cell,
+.tableColumnWh .has-gutter tr th:nth-of-type(2) .cell,
+.tableColumnWh .el-table__row td:nth-of-type(2) .cell{
+    padding:0px;
+    min-width: auto;
+}
+.linkCon.linkTitBox{
+    margin-top: 10px;
+}
+.linkTipsBox{
+    position: relative;
+}
+.linkTipsBox .monResultstipCon{
+    z-index: 11;
+}
+.linkTipsBox:hover .monResultstipCon{
+    display: block;
+}
+.linkSvgDesc{
+    margin-top: 7px;
+    margin-left: 5px;
+}
+.pwdOmission{
+    font-size: 30px;
+    line-height: 23px;
+}
+.xmtzhxxLink{
+    position: absolute;
+    left: 140px;
+    top: 17px;
+    color: #2E8CF0;
+    font-size: 14px;
+    line-height: 17px;
+}
+.xmtzhxxLink:hover,.xmtzhxxLink:focus{
+    opacity: 0.8;
+    color: #2E8CF0;
+}
+.leftMenu .svg-icon{
+    width: 17px !important;
+    height: 17px !important;
+    vertical-align: middle !important;
+}
+.el-submenu__title i {
+    color: #fff;
+    font-size: 14px;
+}
+.el-table th.is-leaf, .el-table td{
+    border-bottom: 1px solid #f0f0f0;
+}
+.el-select-dropdown__item.selected{
+    font-weight: normal;
+}
+.searchAllBox.otherSearchBox.head-container{
+    padding-bottom: 0;
+}
+.newWebsiteAccountDia .el-dialog__body{
+    padding: 26px 20px 0;
+}
+.newWebsiteAccountDia .el-dialog__footer{
+    padding-top: 0;
+    padding-bottom: 16px;
+}
+.newWebsiteAccountDia .el-dialog__footer .dialog-footer{
+    padding-top: 16px;
+}
+.newWarnConfigDia .checkbox-ul li .el-checkbox .el-checkbox__label{
+    display: none;
+}
+.newCollectTask .dialog-footer{
+    padding: 16px 0;
+}
+.newCollectTask .linkCon.padLeft20{
+    padding-left: 20px;
+}
+.el-select-dropdown__item span{
+    width: 91%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.siteElSelect .el-select__tags {
+  display: inline-block;
+  /* max-width: 180px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.changSiteInput .el-select__tags{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.changSiteInput .el-select__tags .el-select__tags-text{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 98px;
+}
+.changSiteInput .el-select__tags  .el-tag__close.el-icon-close{
+  top:-5px;
+}
+.sysMonitorBox{
+  background:#fff;
+  margin-top:10px;
+  padding:20px 20px 0;
+  border-radius: 4px;
+}
+.sysMonitorBox .filter-item.el-input,
+.sysMonitorBox .el-date-editor.el-range-editor,
+.sysMonitorBox .el-button.filter-item{
+  float: left;
+}
+.sysMonitorBox .el-date-editor.el-range-editor{
+  margin: 0 10px;
+}
+.operLog{
+  background: #fff;
+}
+.tabIiconOperate button{
+  border-radius: 4px;
+  padding: 2px;
+}
+.tabIiconOperate button:hover{
+  background:#2e8cf0;
+}
+.tabIiconOperate button:hover .icon{
+  display: inline-block;
+  fill:#fff;
+  opacity: 1;
+}
+.dialogYyDetails .el-dialog__footer{
+  padding: 0 20px;
+}
+.advanced-search{
+  /deep/ .el-form-item__label{
+     font-size: 14px;
+     color: #000;
+     line-height: 30px;
+     opacity: 1;
+   }
+}
+.advanced-search {
+  .wdh-calc135 {
+    width: calc(100% - 303px);
+    margin-right: 10px;
+  }
+  .wdh-calc135-second{
+    margin-left: 96px;
+  }
+}
+/*通用人物弹框*/
+.el-checkbox-button:first-child .el-checkbox-button__inner,.el-checkbox-button--small .el-checkbox-button__inner{
+  border:0;
+  border-radius: 4px 0 0 4px;
+}
+.dialogUniversal .el-transfer{
+  height: 100%;
+}
+.dialogUniversal .characterLeft .textName .el-transfer-panel__filter,
+.selectedNum .textName .el-transfer-panel__filter{
+  margin: 0;
+}
+.dialogUniversal .characterLeft .textName .el-transfer-panel__filter .el-input__inner,
+.selectedNum .textName .el-transfer-panel__filter .el-input__inner{
+  border-radius: 4px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+.currentQuantityBox .el-checkbox{
+  vertical-align: top;
+  line-height: 32px;
+}
+.currentQuantityBox .el-checkbox .el-checkbox__input{
+  float: left;
+  padding: 9px 0 0 10px;
+}
+.dialogUniversal .characterLeft  .el-checkbox-group{
+  margin: 0 -6px;
+  width: 578px;
+}
+.dialogUniversal .characterLeft  .el-checkbox-group .el-checkbox-button,
+.dialogUniversal .selectedNum .el-checkbox-button{
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 0;
+  margin: 0 6px;
+  margin-bottom: 12px;
+}
+.dialogUniversal .characterLeft  .el-checkbox-group .el-checkbox-button .el-checkbox-button__inner,
+.dialogUniversal .selectedNum .el-checkbox-button .el-checkbox-button__inner{
+  padding: 0 8px;
+  line-height: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.dialogUniversal .characterLeft .el-transfer-panel__body{
+  height: -webkit-calc(100% - 92px);
+  height: -moz-calc(100% - 92px);
+  height: calc(100% - 92px);
+}
+.dialogUniversal .selectedNum .el-transfer-panel__body{
+  height: -webkit-calc(100% - 92px);
+  height: -moz-calc(100% - 92px);
+  height: calc(100% - 92px);
+}
+.dialogUniversal .characterLeft .el-checkbox-group.el-transfer-panel__list,
+.dialogUniversal .selectedNum .el-checkbox-group.el-transfer-panel__list{
+  height: 100%;
+}
+.dialogUniversal .selectedNum .el-checkbox-button .el-checkbox-button__inner{
+  background: none;
+  -webkit-transition: none;
+  transition:none;
+}
+.dialogUniversal .selectedNum .el-checkbox-button .el-checkbox-button__inner .svg-icon-closeWhite{
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.dialogUniversal .selectedNum .el-checkbox-button:hover{
+  color: #fff;
+  background-color: #2E8CF0;
+  border-color: #2E8CF0;
+  border-radius: 4px;
+}
+.dialogUniversal .selectedNum .el-checkbox-button:hover .el-checkbox-button__inner{
+  color: #fff;
+}
+.fileUploading .UploadProgressBg .el-progress-bar__outer{
+  height: 2px !important;
+}
+.beyondTextCon.el-button--small{
+  padding: 0;
+  width: 60px;
+  border: none;
+}
+.el-image__error {
+  display: none;
+}
+.el-image-viewer__btn.el-image-viewer__close {
+  color: rgba(255, 255, 255, 0.85);
+}
+.el-image-viewer__wrapper {
+  z-index: 999999 !important;
+}
+
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:before{
+  float: right;
+  margin-right: -10px;
+  margin-top: -10px;
+}
+.el-form-item--small.el-form-item{
+  margin-bottom: 20px;
+}
+
+.el-cascader-panel .el-checkbox {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+}
+.el-cascader-node__label{
+  margin-left: 10px;
+}
+/* 这个样式针对IE有用，不考虑IE的可以不用管*/
+.el-cascader-panel .el-cascader-node__postfix {
+    top: 10px;
+} 
